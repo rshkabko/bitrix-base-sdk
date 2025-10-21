@@ -1,0 +1,12 @@
+{
+    "name": "flamix/bitrix-base-sdk",
+    "description": "Основной объект, который подключает много вспомагательных объектов",
+    "require": {
+        "php" : "~7.0|~8.0"
+    },
+    "autoload":{
+        "psr-4":{
+            "Flamix\\":"src"
+        }
+    }
+}
