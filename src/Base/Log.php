@@ -10,7 +10,7 @@ class Log {
 	/**
 	*	Название файла для логов
 	*/
-	function define_path( $module = false ){
+    public static function define_path( $module = false ){
 		if(!$module)
 			$module = '';
 		else
@@ -33,7 +33,7 @@ class Log {
 	*	Добавляем лог
 	*	Log::add('Запрос поступил.', $_POST);
 	*/
-	function add( $text = false, $param = false, $module = false ){
+	public static function add( $text = false, $param = false, $module = false ){
 		if( !self::$debug )
 			return false;
 
@@ -59,7 +59,7 @@ class Log {
 	/**
 	*	Критическая ошибка, нужно оповещать админа о таких ошибках
 	*/
-	function alert( $text = false, $param = false, $module = false ){
+    public static function alert( $text = false, $param = false, $module = false ){
 		self::$debug = true;
 		Mail::php_mail( self::$dev_email, 'Критическая ошибка', '<p>' . $text . '</p>' . '<p>Более подробно смотрите в логах!</p>' );
 		return self::add( $text, $param, $module );
@@ -67,7 +67,7 @@ class Log {
 
 
 	//Взяли из битрикса
-	function AddMessage2Log( $sText, $sModule = "", $traceDepth = 6, $bShowArgs = false, $file_name = false ) {
+    private static function AddMessage2Log( $sText, $sModule = "", $traceDepth = 6, $bShowArgs = false, $file_name = false ) {
 	    if ($file_name){
 	        if(!is_string($sText))
 	        {

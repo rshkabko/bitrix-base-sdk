@@ -7,7 +7,7 @@ class DB {
     /**
     *   Строит Query, возвращает массив
     */
-    function query($sql = false){
+    public static function query($sql = false){
         global $DB;
         $array = Array();
 
@@ -26,7 +26,7 @@ class DB {
     /**
     *   Строит Query, возвращает массив
     */
-    function b_query($sql = false){
+    public static function b_query($sql = false){
         global $DB;
         $array = Array();
 
@@ -45,7 +45,7 @@ class DB {
     /**
     *   Строит Query, возвращает массив
     */
-    function query_one($sql = false){
+    public static function query_one($sql = false){
         global $DB;
 
         $result = $DB->query($sql, false);
@@ -58,7 +58,7 @@ class DB {
     /**
     *   Строит Query, возвращает массив
     */
-    function b_query_one($sql = false){
+    public static function b_query_one($sql = false){
         global $DB;
 
         $result = $DB->query($sql, false);
@@ -72,7 +72,7 @@ class DB {
     /**
     *   Берет одно значение по параметру
     */
-    function get_var($var_name = false, $table = false, $where = false){
+    public static function get_var($var_name = false, $table = false, $where = false){
         $where_insert = "WHERE 1 = 1 ";
 
         if($where)
@@ -91,7 +91,7 @@ class DB {
     /**
     *   Вставляем в БД, вовращает ID вставки
     */
-    function insert($table_name = false, $arFields = false){
+    public static function insert($table_name = false, $arFields = false){
         global $DB;
 
         $id = $DB->Insert( $table_name, $arFields );
@@ -101,7 +101,7 @@ class DB {
     /**
     *   Обновляем табилцу
     */
-    function update($table_name = false, $arFields = false, $where = false){
+    public static function update($table_name = false, $arFields = false, $where = false){
         global $DB;
         $where_insert = "WHERE 1 = 1 ";
         if(!$table_name || empty($arFields))
@@ -117,7 +117,7 @@ class DB {
     /**
     *   Собирает последнее ID
     */
-    function get_last_param($table = false, $param = 'ID'){
+    public static function get_last_param($table = false, $param = 'ID'){
         $sql = "SELECT {$param}
                     FROM {$table}
                         ORDER BY {$param} DESC
@@ -130,38 +130,21 @@ class DB {
     /**
     *   Подготавливаем STRING
     */
-    function to_string($string = false){
+    public static function to_string($string = false){
         return "'".trim($string)."'";
     }
 
     /**
     *   Подготавливаем INT
     */
-    function to_int($int = false){
+    public static function to_int($int = false){
         return intval( $int );
     }
 
     /**
     *   Подготавливаем FLOAT
     */
-    function to_float($float = false){
+    public static function to_float($float = false){
         return floatval( $float );
-    }
-
-
-
-
-    /*BILL5*/
-    /**
-    *   Строит Query, возвращает массив
-    */
-    function bill_query_one( $sql = false ){
-        global $BILL5;
-
-        $result = $BILL5->query($sql, false);
-
-        if( self::$debug ) echo $sql;
-
-        return $result->fetch();
     }
 }

@@ -7,7 +7,7 @@ class Menu {
 	/**
 	*	Формируем меню с правильным уровнем вложености
 	*/
-	function get_depth_menu($arResult = false){
+	public static function get_depth_menu($arResult = false){
 		if(!$arResult)
 			return false;
 		$return = array();
@@ -43,7 +43,7 @@ class Menu {
 	/**
 	*	Имеет ли элемент подменю?
 	*/
-	function is_parent($arResult = false){
+    public static function is_parent($arResult = false){
 		return $arResult["IS_PARENT"];
 	}
 
@@ -51,7 +51,7 @@ class Menu {
 	/**
 	*	Уровень вложености
 	*/
-	function depth_level($arResult = false){
+    public static function depth_level($arResult = false){
 		return $arResult["DEPTH_LEVEL"];
 	}
 
@@ -59,7 +59,7 @@ class Menu {
 	/**
 	*	Имеется ли следующий эллемент в массиве?
 	*/
-	function is_have_next($arResult = false){
+    public static function is_have_next($arResult = false){
 		return is_array( $arResult['inner_menu'] );
 	}
 
@@ -67,7 +67,7 @@ class Menu {
 	/**
 	*	Реальный селект?
 	*/
-	function is_select( $url ){
+    public static function is_select( $url ){
 		if($_SERVER["REQUEST_URI"] == $url)
 			return true;
 		else
@@ -78,7 +78,7 @@ class Menu {
 	/**
 	*	Рендер пункта меню
 	*/
-	function show_url($arResult = false, $href_class = false, $inner_tag = ''){
+    public static function show_url($arResult = false, $href_class = false, $inner_tag = ''){
 		if(!$arResult)
 			return false;
 
